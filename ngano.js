@@ -50,9 +50,9 @@ function updateClock() {
   const now = new Date();
   const hours = now.getHours().toString().padStart(2, "0");
   const minutes = now.getMinutes().toString().padStart(2, "0");
-    now.getSeconds().toString().padStart(2, "0");
-    const weekday = getWeekDay(now);
-    const month = getMonthOfTheYear(now);
+  now.getSeconds().toString().padStart(2, "0");
+  const weekday = getWeekDay(now);
+  const month = getMonthOfTheYear(now);
   const date = now.getDate();
 
   document.getElementById(
@@ -103,7 +103,7 @@ const dotsBox = document.querySelector(".hero-dots");
 
 const images = [
   {
-    image: "images/main-view_1920x1440.jpg",
+    image: "images/classes-1.jpg",
     text: "Education is the great equalizer of our time. It gives hope to the hopeless and creates chances for those without... - Kofi Annan",
   },
   {
