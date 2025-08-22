@@ -1,0 +1,229 @@
+// noinspection JSCheckFunctionSignatures
+
+// hide and show navigation links in mobile view
+const navLinks = document.getElementById("navLinks");
+
+const showMenu = document.querySelector(".fa-bars");
+const hideMenu = document.querySelector(".fa-times");
+
+showMenu.onclick = () => {
+  navLinks.style.right = "0";
+};
+
+hideMenu.onclick = () => {
+  navLinks.style.right = "-200px";
+};
+
+// Sticky nav on scroll
+const nav = document.querySelector("nav");
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  const headerBottom = header.offsetTop + header.offsetHeight;
+  if (window.scrollY > headerBottom) {
+    nav.classList.add("sticky", "visible");
+  } else {
+    nav.classList.remove("sticky", "visible");
+  }
+});
+
+// The scroll to top button
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > header.offsetHeight) {
+    scrollToTopBtn.classList.add("showBtn");
+  } else {
+    scrollToTopBtn.classList.remove("showBtn");
+  }
+});
+
+scrollToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+// The footer clock
+function updateClock() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+    now.getSeconds().toString().padStart(2, "0");
+    const weekday = getWeekDay(now);
+    const month = getMonthOfTheYear(now);
+  const date = now.getDate();
+
+  document.getElementById(
+    "clock"
+  ).textContent = `${weekday} ${date} ${month} ${hours}:${minutes}`;
+}
+
+function getWeekDay(date) {
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+
+function getMonthOfTheYear(date) {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  return months[date.getMonth()];
+}
+
+// update the time immediately, and then after every second
+updateClock();
+setInterval(updateClock, 1000);
+
+// Copyright year
+const year = document.getElementById("year");
+const thisYear = new Date().getFullYear();
+year.setAttribute("datetime", thisYear);
+year.textContent = thisYear;
+
+//
+// Carousel functionality
+const heroSection = document.querySelector(".hero_section");
+const prevBtn = document.querySelector(".prevBtn");
+const nextBtn = document.querySelector(".nextBtn");
+const heroTextBox = document.querySelector(".hero_text-box");
+const dotsBox = document.querySelector(".hero-dots");
+
+const images = [
+  {
+    image: "images/main-view_1920x1440.jpg",
+    text: "Education is the great equalizer of our time. It gives hope to the hopeless and creates chances for those without... - Kofi Annan",
+  },
+  {
+    image: "images/admin-view.jpg",
+    text: "Just as food eaten without appetite is a tedious nourishment, so does study without zeal damage the memory by not assimilating what it absorbs. - R.Q",
+  },
+  {
+    image: "images/flag-square.jpg",
+    text: "You'll find that education is just about the only thing lying around loose in this world, and it's about the only thing a fellow can have as much of as he's willing to haul away. - John Graham",
+  },
+  {
+    image: "images/assembly.jpg",
+    text: "Intense curiosity keeps you young. When we're green we grow, when we're ripe we rot. -R.Q",
+  },
+];
+
+let currentImageIndex = 0;
+
+function updateBackground() {
+  // Remove show class and clear text for animation reset
+  heroTextBox.classList.remove("show");
+  heroTextBox.textContent = "";
+
+  // Change background image immediately
+  heroSection.style.backgroundImage = `linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.5)), url(${images[currentImageIndex].image})`;
+  heroSection.style.transition = "all 0.5s ease-in-out";
+
+  updateDots();
+
+  // Show text after 2 seconds
+  setTimeout(() => {
+    heroTextBox.textContent = images[currentImageIndex].text;
+    heroTextBox.classList.add("show");
+  }, 2000);
+}
+
+images.forEach(() => {
+  const dot = document.createElement("span");
+  dotsBox.append(dot);
+});
+
+function updateDots() {
+  const allDots = dotsBox.querySelectorAll("span");
+  allDots.forEach((dot) => dot.classList.remove("active"));
+  allDots[currentImageIndex].classList.add("active");
+}
+
+// initialize the background with the first image
+updateBackground();
+
+// Then autoplay after every 15 seconds
+let autoplayId;
+
+const startAutoplay = () => {
+  autoplayId = setInterval(() => {
+    currentImageIndex++;
+    if (currentImageIndex >= images.length) currentImageIndex = 0;
+    updateBackground();
+  }, 15000);
+};
+
+const stopAutoplay = () => {
+  clearInterval(autoplayId);
+};
+
+function resetAutoplay() {
+  stopAutoplay();
+  startAutoplay();
+}
+// call the startAutoplay function
+startAutoplay();
+
+// manual navigation
+prevBtn.addEventListener("click", () => {
+  currentImageIndex--;
+  if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+  updateBackground();
+  resetAutoplay();
+});
+
+nextBtn.addEventListener("click", () => {
+  currentImageIndex++;
+  if (currentImageIndex >= images.length) currentImageIndex = 0;
+  updateBackground();
+  resetAutoplay();
+});
+
+// Dots navigation
+dotsBox.addEventListener("click", (e) => {
+  if (e.target.tagName === "SPAN") {
+    currentImageIndex = Array.from(dotsBox.children).indexOf(e.target);
+    updateBackground();
+    resetAutoplay();
+  }
+});
+
+// Mobile swipe support
+let touchStartX = 0;
+let touchEndX = 0;
+
+heroSection.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].clientX;
+});
+
+heroSection.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].clientX;
+  handleSwipe();
+  resetAutoplay();
+});
+
+function handleSwipe() {
+  if (touchStartX - touchEndX > 50) {
+    // Swipe left
+    currentImageIndex++;
+    if (currentImageIndex >= images.length) currentImageIndex = 0;
+    updateBackground();
+  } else if (touchEndX - touchStartX > 50) {
+    // Swipe right
+    currentImageIndex--;
+    if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+    updateBackground();
+  }
+}
