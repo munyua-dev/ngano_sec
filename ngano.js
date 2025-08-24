@@ -11,7 +11,7 @@ showMenu.onclick = () => {
 };
 
 hideMenu.onclick = () => {
-  navLinks.style.right = "-200px";
+  navLinks.style.right = "-45vw";
 };
 
 // Sticky nav on scroll
@@ -103,24 +103,34 @@ const dotsBox = document.querySelector(".hero-dots");
 
 const images = [
   {
-    image: "images/classes-1.jpg",
+    image: "images/home-carousel/classes-1.jpg",
     text: "Education is the great equalizer of our time. It gives hope to the hopeless and creates chances for those without... - Kofi Annan",
   },
   {
-    image: "images/admin-view.jpg",
+    image: "images/home-carousel/admin-view.jpg",
     text: "Just as food eaten without appetite is a tedious nourishment, so does study without zeal damage the memory by not assimilating what it absorbs. - R.Q",
   },
   {
-    image: "images/flag-square.jpg",
+    image: "images/home-carousel/flag-square.jpg",
     text: "You'll find that education is just about the only thing lying around loose in this world, and it's about the only thing a fellow can have as much of as he's willing to haul away. - John Graham",
   },
   {
-    image: "images/assembly.jpg",
+    image: "images/home-carousel/assembly.jpg",
     text: "Intense curiosity keeps you young. When we're green we grow, when we're ripe we rot. -R.Q",
+  },
+  {
+    image: "images/home-carousel/plant-tree.jpeg",
+    text: "The best time to plant a tree was 20 years ago. The second best time is now. - Chinese Proverb",
   },
 ];
 
 let currentImageIndex = 0;
+
+// Preload images
+images.forEach((img) => {
+  const image = new Image();
+  image.src = img.image;
+});
 
 function updateBackground() {
   // Remove show class and clear text for animation reset
@@ -129,7 +139,8 @@ function updateBackground() {
 
   // Change background image immediately
   heroSection.style.backgroundImage = `linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.5)), url(${images[currentImageIndex].image})`;
-  heroSection.style.transition = "all 0.5s ease-in-out";
+
+  heroSection.classList.add("ready"); // to fade in when JS loads
 
   updateDots();
 
@@ -227,3 +238,4 @@ function handleSwipe() {
     updateBackground();
   }
 }
+// End of carousel functionality

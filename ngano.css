@@ -302,8 +302,14 @@ main {
   width: 100%;
   background-position: center;
   background-size: cover;
+  background-image: url(images/home-carousel/classes-1.jpg); /* Default image */
+  opacity: 0; /* hidden at start */
   position: relative;
   overflow: hidden;
+  transition: opacity 1s ease-in-out;
+}
+.hero_section.ready {
+  opacity: 1; /* show when JS loads */
 }
 
 .prevBtn,
@@ -426,8 +432,20 @@ main {
   margin-bottom: var(--margin-sm);
 }
 
-.admin .col-img img {
-  border: 10px groove var(--primary);
+.col-img .image {
+  max-width: 75%;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.image img {
+  max-width: 100%;
+  transition: all 0.5s linear;
+}
+
+.image:hover img {
+  transform: scale(1.05);
 }
 
 .admin article:nth-child(even) :nth-child(even) {
@@ -437,6 +455,10 @@ main {
 /* =========================
    12. Facilities
    ========================= */
+.facilities {
+  margin-bottom: var(--margin-lg);
+}
+
 .facilities-col {
   flex-basis: 32%;
   border-radius: var(--radius-md);
@@ -459,8 +481,8 @@ main {
   background: rgba(30, 144, 255, 0.4);
 }
 
-.layer h3 {
-  color: var(--white);
+.layer h3,
+.layer p {
   font-weight: 800;
   font-size: var(--font-lg);
   position: absolute;
@@ -471,7 +493,8 @@ main {
   transition: 0.5s;
 }
 
-.layer:hover h3 {
+.layer:hover h3,
+.layer:hover p {
   bottom: 49%;
   opacity: 1;
 }
@@ -483,39 +506,64 @@ main {
 /* =========================
    13. Testimonials
    ========================= */
-.testimonials {
-  padding-top: var(--margin-lg);
-}
 
-.testimonials-col {
+.testimonials-section {
   display: flex;
-  flex-basis: 44%;
-  background: var(--primary);
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonials {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1.5rem;
+
+  background-image: linear-gradient(
+      var(--overlay-strong),
+      var(--overlay-strong)
+    ),
+    url(images/prize-giving/agm-6.jpeg);
+  background-position: center;
+  background-size: cover;
   border-radius: var(--radius-md);
-  text-align: left;
-  padding: 1.5rem;
-  margin-bottom: 5%;
+  margin-top: var(--margin-md);
 }
 
-.testimonials-col img {
-  width: 50px;
-  height: 50px;
+.testimonial-col {
+  width: min(100%, 350px);
+  background: var(--primary);
+  border: 1px solid var(--white);
+  border-radius: var(--radius-md);
+  padding: var(--padding-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonial-img img {
+  width: 150px;
+  height: 150px;
+  border: 5px double var(--primary-dark);
   border-radius: 50%;
-  margin-right: 1.5rem;
+}
+.testimonial-content {
+  margin: var(--margin-sm) 0;
+  color: #505050;
+  line-height: 1.5;
+  text-align: left;
+  font-size: var(--font-md);
 }
 
-.testimonials-col p {
-  color: #333;
-  font-style: italic;
+.testimonial-title {
+  margin: var(--margin-sm) 0;
+  margin-top: auto;
 }
 
-.testimonials-col h3 {
-  margin-top: 0.5rem;
-}
-
-.testimonials-col [class^="fa"] {
+.testimonial-title [class^="fa"] {
   color: var(--accent);
-  margin-top: 0.5rem;
 }
 
 /* =========================
@@ -526,7 +574,7 @@ main {
   padding: 100px 0;
   border-radius: var(--radius-md);
   background-image: linear-gradient(var(--overlay), var(--overlay)),
-    url(images/view-1.jpg);
+    url(images/views/view-1.jpg);
   background-position: center;
   background-size: cover;
   text-align: center;
@@ -636,7 +684,7 @@ li {
 /* About */
 .about-header {
   background-image: linear-gradient(var(--overlay), var(--overlay)),
-    url(images/about_bckgrd.jpg);
+    url(images/header-backgrd/about_bckgrd.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -668,7 +716,7 @@ li {
       var(--overlay-strong),
       var(--overlay-strong)
     ),
-    url(images/governor_and_teachers.jpg);
+    url(images/header-backgrd/departs-header.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -720,7 +768,7 @@ li {
       var(--overlay-strong),
       var(--overlay-strong)
     ),
-    url(images/cont_banner2.jpg);
+    url(images/header-backgrd/cont_banner2.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -799,7 +847,7 @@ li {
    ========================= */
 .gallery-header {
   background-image: linear-gradient(var(--overlay), var(--overlay)),
-    url(images/gallery-banner.jpg);
+    url(images/header-backgrd/photo-collage.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -811,15 +859,17 @@ li {
   gap: 1rem;
 }
 
-.gallery figure {
+.gallery > div {
   flex: 0 0 calc(33.3333% - 1rem);
-  margin-bottom: 1rem;
+  margin-bottom: var(--margin-sm);
+  position: relative;
+  overflow: hidden;
 }
 
 .gallery img {
   width: 100%;
   border-radius: var(--radius-sm);
-  border: 10px groove var(--primary);
+  /* height: 100%; */
 }
 
 /* =========================
@@ -838,9 +888,9 @@ li {
   .nav_links {
     position: absolute;
     top: 0;
-    right: -200px;
-    width: 200px;
-    height: 100vh;
+    right: -45vw; /* Hide off-screen */
+    width: 42vw;
+    height: 45vh;
     background: var(--primary);
     text-align: left;
     z-index: 2;
@@ -849,6 +899,7 @@ li {
 
   .nav_links ul li {
     display: block;
+    padding-left: var(--padding-sm);
   }
 
   nav .fa {
@@ -899,5 +950,14 @@ li {
   .hero_section:hover .prevBtn,
   .hero_section:hover .nextBtn {
     display: none;
+  }
+
+  .testimonials {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1.5rem;
   }
 }
