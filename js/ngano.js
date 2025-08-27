@@ -239,3 +239,31 @@ function handleSwipe() {
   }
 }
 // End of carousel functionality
+
+// Swiper for testimonials: Swiper Library
+const swiperTestimonial = new Swiper(".testimonial__swiper", {
+  loop: true,
+  slidesPerView: "auto",
+  centeredSlides: "auto",
+  spaceBetween: 16,
+  grabCursor: true,
+  speed: 600,
+  effect: "coverflow",
+  coverflowEffect: {
+    rotate: -90,
+    depth: 600,
+    modifier: 0.5,
+    slideShadows: false,
+  },
+
+  // pagination
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+});

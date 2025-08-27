@@ -2,26 +2,15 @@
 <html lang="en">
 
 <head>
-
-	<!-- Google tag (gtag.js) -->
-	<script async
-		src="https://www.googletagmanager.com/gtag/js?id=G-TFNY6TW66B"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-TFNY6TW66B');
-	</script>
-
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="author" content="Munyua" />
 	<title>HOME | Ngano Secondary</title>
-	<link rel="stylesheet" href="ngano.css" />
 	<link rel="stylesheet" href="fontawesome-free-7.0.0-web/css/all.css" />
 	<script src="https://kit.fontawesome.com/79e14c08f4.js"
 		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/swiper-bundle.min.css" />
+	<link rel="stylesheet" href="css/ngano.css" />
 </head>
 
 <body>
@@ -315,17 +304,27 @@
 			</article>
 		</section>
 
-		<section class="testimonials-section">
-			<h3><span class="highlight">What Our</span> Alumni Say</h3>
+		<section class="testimonial">
+			<h3 class="testimonial__title"><span class="highlight">What
+					Our</span> Alumni Say</h3>
 
-			<div class="testimonials">
-				<div class="testimonial-col">
-					<figure class="testimonial-img">
-						<img src="images/alumni/denis-1.jpeg"
-							alt="Dennis King'ori" />
-					</figure>
-					<div class="testimonial-content">
-						<p>
+			<div class="testimonial__swiper container swiper">
+				<div class="swiper-wrapper">
+					<div class="testimonial__card swiper-slide">
+						<img src="images/alumni/denis-1.jpeg" alt="image"
+							class="testimonial__image" />
+						<h3 class="testimonial__name">Dennis King'ori</h3>
+						<div class="testimonial__rating">
+							<div class="testimonial__stars">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa-regular fa-star"></i>
+							</div>
+							<h3 class="testimonial__number">4.0</h3>
+						</div>
+						<p class="testimonial__description">
 							I am deeply honored to be an alumnus of Ngano
 							Secondary
 							School, an institution that
@@ -334,61 +333,59 @@
 							guide my personal and professional journey.
 						</p>
 					</div>
-					<div class="testimonial-title">
-						<h3>Dennis King'ori</h3>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa-regular fa-star"></i>
-					</div>
-				</div>
 
-				<div class="testimonial-col">
-					<figure class="testimonial-img">
-						<img src="images/teachers/dummy_img.jpg" alt="" />
-					</figure>
-					<div class="testimonial-content">
-						<p>
+					<div class="testimonial__card swiper-slide">
+						<img src="images/teachers/dummy_img.jpg" alt="image"
+							class="testimonial__image" />
+						<h3 class="testimonial__name">Female Student</h3>
+						<div class="testimonial__rating">
+							<div class="testimonial__stars">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa-regular fa-star-half-stroke"></i>
+							</div>
+							<h3 class="testimonial__number">4.5</h3>
+						</div>
+						<p class="testimonial__description">
 							Ngano Secondary School provided me with a solid
-							foundational education and invaluable life skills.
+							foundational education and invaluable life
+							skills.
 							The supportive community and dedicated teachers
 							made all the difference in my academic journey.
 						</p>
 					</div>
-					<div class="testimonial-title">
-						<h3>Former Student</h3>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa-regular fa-star-half-stroke"></i>
-					</div>
-				</div>
 
-				<div class="testimonial-col">
-					<figure class="testimonial-img">
-						<img src="images/teachers/dummy_img.jpg" alt="" />
-					</figure>
-					<div class="testimonial-content">
-						<p>
-							Ngano Secondary School has a vibrant community that
+					<div class="testimonial__card swiper-slide">
+						<img src="images/teachers/dummy_img.jpg" alt="image"
+							class="testimonial__image" />
+
+						<h3 class="testimonial__name">Male Student</h3>
+						<div class="testimonial__rating">
+							<div class="testimonial__stars">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa-regular fa-star-half-stroke"></i>
+								<i class="fa-regular fa-star"></i>
+							</div>
+							<h3 class="testimonial__number">3.5</h3>
+						</div>
+						<p class="testimonial__description">
+							Ngano Secondary School has a vibrant community
+							that
 							fosters personal growth and development. I am
 							grateful
-							for the experiences and opportunities I had during
+							for the experiences and opportunities I had
+							during
 							my
 							time here.
 						</p>
 					</div>
-					<div class="testimonial-title">
-						<h3>Former Student</h3>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa-regular fa-star-half-stroke"></i>
-						<i class="fa-regular fa-star"></i>
-					</div>
 				</div>
+				<!-- Pagination -->
+				<div class="swiper-pagination"></div>
 			</div>
 		</section>
 
@@ -487,7 +484,9 @@
 				class="fa-brands fa-x-twitter"></i></a>
 	</div>
 
-	<script src="ngano.js"></script>
+	<script src="js/swiper-bundle.min.js"></script>
+
+	<script src="js/ngano.js"></script>
 </body>
 
 </html>
