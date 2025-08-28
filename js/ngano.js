@@ -1,18 +1,53 @@
-// noinspection JSCheckFunctionSignatures
-
 // hide and show navigation links in mobile view
+
 const navLinks = document.getElementById("navLinks");
+const menuToggle = document.querySelector(".menu-toggle");
 
-const showMenu = document.querySelector(".fa-bars");
-const hideMenu = document.querySelector(".fa-times");
+// If .menu-toggle doesn't exist, create it and insert in nav
+if (!menuToggle) {
+  const nav = document.querySelector("nav");
+  const btn = document.createElement("span");
+  btn.className = "menu-toggle fa fa-bars";
+  btn.setAttribute("aria-label", "Toggle navigation menu");
+  nav.appendChild(btn);
+}
 
-showMenu.onclick = () => {
+const menuBtn = document.querySelector(".menu-toggle");
+
+function openMenu() {
   navLinks.style.right = "0";
+  menuBtn.classList.remove("fa-bars");
+  menuBtn.classList.add("fa-times");
+}
+
+function closeMenu() {
+  navLinks.style.right = "-45vw";
+  menuBtn.classList.remove("fa-times");
+  menuBtn.classList.add("fa-bars");
+}
+
+// Initial state: bars
+closeMenu();
+
+menuBtn.onclick = function (e) {
+  e.stopPropagation();
+  if (navLinks.style.right === "0" || navLinks.style.right === "0px") {
+    closeMenu();
+  } else {
+    openMenu();
+  }
 };
 
-hideMenu.onclick = () => {
-  navLinks.style.right = "-45vw";
-};
+// Close menu when clicking outside navLinks or menuBtn
+document.addEventListener("click", function (e) {
+  const isMenuOpen =
+    navLinks.style.right === "0" || navLinks.style.right === "0px";
+  if (!isMenuOpen) return;
+  // If click is outside navLinks and menuBtn
+  if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+    closeMenu();
+  }
+});
 
 // Sticky nav on scroll
 const nav = document.querySelector("nav");
