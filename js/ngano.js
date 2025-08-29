@@ -208,7 +208,7 @@ const startAutoplay = () => {
     currentImageIndex++;
     if (currentImageIndex >= images.length) currentImageIndex = 0;
     updateBackground();
-  }, 15000);
+  }, 10000);
 };
 
 const stopAutoplay = () => {
