@@ -99,20 +99,20 @@
                 </div>
             </div>
             <div class="contact-col">
-                <form action="https://httpbin.org/get" method="get"
+                <form action="/thankyou.html" method="post" data-netlify="true"
                     class="contact-form">
                     <fieldset>
                         <label>
-                            <input type="text" placeholder="Your Name"
-                                required />
+                            <input type="text" name="name"
+                                placeholder="Your Name" required />
                         </label>
                         <label>
-                            <input type="email" placeholder="Your Email"
-                                required />
+                            <input type="email" name="email"
+                                placeholder="Your Email" required />
                         </label>
                         <label>
-                            <input type="text" placeholder="Your Email Subject"
-                                required />
+                            <input type="text" name="subject"
+                                placeholder="Your Email Subject" required />
                         </label>
                         <label for="message">
                             <textarea name="message" id="message" cols="8"
