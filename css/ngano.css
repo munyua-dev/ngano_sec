@@ -971,6 +971,31 @@ li {
   /* height: 100%; */
 }
 
+.thankyou-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.thankyou-container h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.thankyou-container p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.thankyou-container .quote {
+  font-style: italic;
+  color: #555;
+  margin-top: 30px;
+}
+
 /* =========================
    20. Responsive Design
    ========================= */
