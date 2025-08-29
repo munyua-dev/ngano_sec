@@ -971,6 +971,14 @@ li {
   /* height: 100%; */
 }
 
+.thankyou-header {
+  height: 40vh;
+  background-image: linear-gradient(var(--overlay), var(--overlay)),
+    url(../images/header-backgrd/thankyou-bcgrd.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
 .thankyou-container {
   max-width: 600px;
   margin: 0 auto;
