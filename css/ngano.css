@@ -388,7 +388,7 @@ main {
 /* =========================
    10. Introduction & Motto
    ========================= */
-.grid-intro {
+.intro-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--margin-md);
@@ -397,7 +397,7 @@ main {
   padding: var(--padding-md);
 }
 
-.grid-intro::before {
+.intro-grid::before {
   content: "";
   position: absolute;
   top: 0;
@@ -409,7 +409,7 @@ main {
   z-index: 1;
 }
 
-.grid-intro::after {
+.intro-grid::after {
   content: "";
   position: absolute;
   top: -30px;
@@ -419,11 +419,11 @@ main {
   background: var(--primary);
 }
 
-.grid-intro img {
+.intro-grid img {
   border-radius: var(--radius-sm);
 }
 
-.grid-intro p {
+.intro-grid p {
   line-height: 1.5;
   color: var(--para-color);
   text-align: left;
@@ -455,34 +455,30 @@ main {
   margin: var(--margin-lg) 0;
 }
 
-.admin article {
-  border-bottom: 1px solid rgba(30, 144, 255, 0.4);
-  border-bottom-left-radius: var(--radius-md);
-  border-bottom-right-radius: var(--radius-md);
+.admin .grid-content,
+.admin .grid-img {
+  max-width: 50%;
+  text-align: left;
+  padding: var(--padding-sm);
 }
 
-.admin .col-img {
-  margin-bottom: var(--margin-sm);
+.grid-img .title {
+  margin-top: var(--margin-sm);
 }
 
-.col-img .image {
-  max-width: 75%;
-  border: 1px solid var(--primary);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .admin .grid-content,
+  .admin .grid-img {
+    max-width: 100%;
+  }
 }
 
-.image img {
-  max-width: 100%;
-  transition: all 0.5s linear;
-}
-
-.image:hover img {
-  transform: scale(1.05);
-}
-
-.admin article:nth-child(even) :nth-child(even) {
-  order: -1;
+/* Tablet */
+@media screen and (min-width: 680px) and (max-width: 1024px) {
+  .admin .intro-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================
@@ -968,7 +964,6 @@ li {
 .gallery img {
   width: 100%;
   border-radius: var(--radius-sm);
-  /* height: 100%; */
 }
 
 .thankyou-header {
@@ -1029,7 +1024,6 @@ li {
     display: block;
     color: var(--white);
     font-size: 1.325rem;
-    /* margin: var(--margin-sm); */
     cursor: pointer;
   }
 
