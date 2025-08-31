@@ -394,19 +394,10 @@ main {
   gap: var(--margin-md);
   position: relative;
   margin-bottom: var(--margin-lg);
-  padding: var(--padding-md);
-}
-
-.intro-grid::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background: rgba(30, 144, 255, 0.1);
-  border-radius: var(--radius-sm);
-  z-index: 1;
+  padding: var(--padding-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-primary);
 }
 
 .intro-grid::after {
@@ -426,7 +417,7 @@ main {
 .intro-grid p {
   line-height: 1.5;
   color: var(--para-color);
-  text-align: left;
+  text-align: justify;
 }
 
 .motto-col {
@@ -446,6 +437,7 @@ main {
 
 .motto-col p {
   color: var(--para-color);
+  text-align: justify;
 }
 
 /* =========================
@@ -460,6 +452,10 @@ main {
   max-width: 50%;
   text-align: left;
   padding: var(--padding-sm);
+}
+
+.grid-content p {
+  text-align: justify;
 }
 
 .grid-img .title {
@@ -755,9 +751,9 @@ li {
 
 /* PARA-COL & IMG-COL */
 .col-content {
-  flex: 0 0 66.6667%;
+  flex: 0 0 48%;
   padding: 0 15px;
-  text-align: left;
+  text-align: justify;
 }
 
 .col-img {
