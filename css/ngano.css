@@ -83,6 +83,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: var(--background);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1:not(.hero_section h1, .sub-header h1),
@@ -390,7 +391,7 @@ main {
    ========================= */
 .intro-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--margin-md);
   position: relative;
   margin-bottom: var(--margin-lg);
@@ -1029,10 +1030,6 @@ li {
 
   .row {
     flex-direction: column;
-  }
-
-  .admin article:nth-child(even) :nth-child(even) {
-    order: unset;
   }
 
   .col-content,
