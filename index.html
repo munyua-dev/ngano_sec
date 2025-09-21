@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="css/ngano.css" />
 </head>
 
-<body>
+<body id="homePage">
 	<div class="header-ribbon">
 		<div class="logo">
 			<a href="index.html">
@@ -63,7 +63,7 @@
 	<main>
 		<section class="introduction">
 			<article>
-				<div class="intro-grid">
+				<div class="intro-grid stagger-top">
 					<p>
 						Ngano Secondary School is a
 						<strong>mixed day and boarding,</strong>
@@ -93,7 +93,7 @@
 					</p>
 				</div>
 			</article>
-			<article class="row">
+			<article class="row stagger-right">
 				<div class="motto-col">
 					<h3>Our Motto:</h3>
 					<p>In Pursuit Of Excellence</p>
@@ -123,7 +123,7 @@
 		<section class="admin">
 			<div class="intro-grid">
 				<article class="row">
-					<div class="grid-content">
+					<div class="grid-content stagger-left">
 						<div class="title">
 							<h5>The Principal</h5>
 						</div>
@@ -140,7 +140,7 @@
 							who contribute positively to society.
 						</p>
 					</div>
-					<div class="grid-img">
+					<div class="grid-img stagger-left">
 						<div class="image">
 							<img src="images/teachers/principal.jpg"
 								alt="Principal" />
@@ -152,7 +152,7 @@
 					</div>
 				</article>
 				<article class="row">
-					<div class="grid-content">
+					<div class="grid-content stagger-right">
 						<div class="title">
 							<h5>The Deputy Principal</h5>
 						</div>
@@ -170,7 +170,7 @@
 							sustains success.
 						</p>
 					</div>
-					<div class="grid-img">
+					<div class="grid-img stagger-right">
 						<div class="image">
 							<img src="images/teachers/deputy.jpg"
 								alt="Deputy Principal" />
@@ -184,7 +184,7 @@
 			</div>
 			<div class="intro-grid">
 				<article class="row">
-					<div class="grid-content">
+					<div class="grid-content stagger-left">
 						<div class="title">
 							<h5>Dean Academics</h5>
 						</div>
@@ -205,7 +205,7 @@
 							they need to succeed in a rapidly changing world.
 						</p>
 					</div>
-					<div class="grid-img">
+					<div class="grid-img stagger-left">
 						<div class="image">
 							<img src="images/teachers/dummy_img.jpg"
 								alt="Dean Academics" />
@@ -217,7 +217,7 @@
 					</div>
 				</article>
 				<article class="row">
-					<div class="grid-content">
+					<div class="grid-content stagger-right">
 						<div class="title">
 							<h5>Dean Student Affairs</h5>
 						</div>
@@ -231,7 +231,7 @@
 							fostering a sense of belonging and community.
 						</p>
 					</div>
-					<div class="grid-img">
+					<div class="grid-img stagger-right">
 						<div class="image">
 							<img src="images/teachers/mwai-1.jpg"
 								alt="Dean of Students" />
@@ -250,7 +250,7 @@
 			<h3><span class="highlight">Our</span> Facilities</h3>
 
 			<div class="facilities-container">
-				<article class="row">
+				<article class="row stagger-bottom">
 					<div class="facilities-col">
 						<img src="images/facilities/school-bus.jpg"
 							alt="School Bus" />
@@ -272,7 +272,7 @@
 						</div>
 					</div>
 				</article>
-				<article class="row">
+				<article class="row stagger-bottom">
 					<div class="facilities-col">
 						<img src="images/views/view-1.jpg" alt="Library" />
 						<div class="layer">
@@ -287,7 +287,7 @@
 						</div>
 					</div>
 					<div class="facilities-col">
-						<img src="images/facilities/physics-lab.jpg"
+						<img src="images/facilities/lab.jpeg"
 							alt="Physics Lab" />
 						<div class="layer">
 							<h3>LABORATORY</h3>
@@ -297,7 +297,7 @@
 			</div>
 		</section>
 
-		<section class="testimonial">
+		<section class="testimonial stagger-top">
 			<h3 class="testimonial__title"><span class="highlight">What
 					Our</span> Alumni Say</h3>
 
@@ -406,7 +406,7 @@
 			</div>
 		</section>
 
-		<section class="cta">
+		<section class="cta fade-in stagger-bottom">
 			<h4>Join the fraternity. Be part of the journey.</h4>
 
 			<div>
@@ -420,7 +420,7 @@
 		<div class="footer-sec row">
 			<article>
 				<h4>Important Links</h4>
-				<ul class="nav__main--links">
+				<ul class="nav__main--links stagger-left">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="departs.html">Departments</a></li>
@@ -428,7 +428,7 @@
 					<li><a href="photos.html">Gallery</a></li>
 				</ul>
 			</article>
-			<article>
+			<article class="stagger-left">
 				<h4>Contact Us</h4>
 				<p>
 					<i class="fas fa-phone"></i>
@@ -446,7 +446,7 @@
 			</article>
 			<article>
 				<h4>External Links</h4>
-				<ul>
+				<ul class="stagger-left">
 					<li>
 						<a target="_blank" href="https://kcserevision.com/">
 							NOTES REVISION MATERIALS
@@ -475,7 +475,9 @@
 		</div>
 
 		<div class="author">
-			<p>Powered by loneWolf&trade; web.dev</p>
+			<p>Created by <a href=" https://munyua-dev.github.io/my-portfolio/"
+					target="_blank" class="author_link">munyua.io</a>
+				web.dev</p>
 		</div>
 	</footer>
 
@@ -500,6 +502,8 @@
 		<a href="https://www.x.com/" target="_blank"><i
 				class="fa-brands fa-x-twitter"></i></a>
 	</div>
+
+	<script src="https://unpkg.com/scrollreveal"></script>
 
 	<script src="js/swiper-bundle.min.js"></script>
 

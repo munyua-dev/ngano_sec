@@ -128,152 +128,154 @@ const thisYear = new Date().getFullYear();
 year.setAttribute("datetime", thisYear);
 year.textContent = thisYear;
 
-//
-// Carousel functionality
-const heroSection = document.querySelector(".hero_section");
-const prevBtn = document.querySelector(".prevBtn");
-const nextBtn = document.querySelector(".nextBtn");
-const heroTextBox = document.querySelector(".hero_text-box");
-const dotsBox = document.querySelector(".hero-dots");
+// Home Page-specific logic
+if (document.body.id === "homePage") {
+  // Carousel functionality
+  const heroSection = document.querySelector(".hero_section");
+  const prevBtn = document.querySelector(".prevBtn");
+  const nextBtn = document.querySelector(".nextBtn");
+  const heroTextBox = document.querySelector(".hero_text-box");
+  const dotsBox = document.querySelector(".hero-dots");
 
-const images = [
-  {
-    image: "images/home-carousel/classes-1.jpg",
-    text: "Education is the great equalizer of our time. It gives hope to the hopeless and creates chances for those without... - Kofi Annan",
-  },
-  {
-    image: "images/home-carousel/admin-view.jpg",
-    text: "Just as food eaten without appetite is a tedious nourishment, so does study without zeal damage the memory by not assimilating what it absorbs. - R.Q",
-  },
-  {
-    image: "images/home-carousel/flag-square.jpg",
-    text: "You'll find that education is just about the only thing lying around loose in this world, and it's about the only thing a fellow can have as much of as he's willing to haul away. - John Graham",
-  },
-  {
-    image: "images/home-carousel/assembly.jpg",
-    text: "Intense curiosity keeps you young. When we're green we grow, when we're ripe we rot. -R.Q",
-  },
-  {
-    image: "images/home-carousel/plant-tree.jpeg",
-    text: "The best time to plant a tree was 20 years ago. The second best time is now. - Chinese Proverb",
-  },
-];
+  const images = [
+    {
+      image: "images/home-carousel/classes-1.jpg",
+      text: "Education is the great equalizer of our time. It gives hope to the hopeless and creates chances for those without... - Kofi Annan",
+    },
+    {
+      image: "images/home-carousel/admin-view.jpg",
+      text: "Just as food eaten without appetite is a tedious nourishment, so does study without zeal damage the memory by not assimilating what it absorbs. - R.Q",
+    },
+    {
+      image: "images/home-carousel/flag-square.jpg",
+      text: "You'll find that education is just about the only thing lying around loose in this world, and it's about the only thing a fellow can have as much of as he's willing to haul away. - John Graham",
+    },
+    {
+      image: "images/home-carousel/assembly.jpg",
+      text: "Intense curiosity keeps you young. When we're green we grow, when we're ripe we rot. -R.Q",
+    },
+    {
+      image: "images/home-carousel/plant-tree.jpeg",
+      text: "The best time to plant a tree was 20 years ago. The second best time is now. - Chinese Proverb",
+    },
+  ];
 
-let currentImageIndex = 0;
+  let currentImageIndex = 0;
 
-// Preload images
-images.forEach((img) => {
-  const image = new Image();
-  image.src = img.image;
-});
+  // Preload images
+  images.forEach((img) => {
+    const image = new Image();
+    image.src = img.image;
+  });
 
-function updateBackground() {
-  // Remove show class and clear text for animation reset
-  heroTextBox.classList.remove("show");
-  heroTextBox.textContent = "";
+  function updateBackground() {
+    // Remove show class and clear text for animation reset
+    heroTextBox.classList.remove("show");
+    heroTextBox.textContent = "";
 
-  // Change background image immediately
-  heroSection.style.backgroundImage = `linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.5)), url(${images[currentImageIndex].image})`;
+    // Change background image immediately
+    heroSection.style.backgroundImage = `linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.5)), url(${images[currentImageIndex].image})`;
 
-  heroSection.classList.add("ready"); // to fade in when JS loads
+    heroSection.classList.add("ready"); // to fade in when JS loads
 
-  updateDots();
+    updateDots();
 
-  // Show text after 2 seconds
-  setTimeout(() => {
-    heroTextBox.textContent = images[currentImageIndex].text;
-    heroTextBox.classList.add("show");
-  }, 2000);
-}
-
-images.forEach(() => {
-  const dot = document.createElement("span");
-  dotsBox.append(dot);
-});
-
-function updateDots() {
-  const allDots = dotsBox.querySelectorAll("span");
-  allDots.forEach((dot) => dot.classList.remove("active"));
-  allDots[currentImageIndex].classList.add("active");
-}
-
-// initialize the background with the first image
-updateBackground();
-
-// Then autoplay after every 15 seconds
-let autoplayId;
-
-const startAutoplay = () => {
-  autoplayId = setInterval(() => {
-    currentImageIndex++;
-    if (currentImageIndex >= images.length) currentImageIndex = 0;
-    updateBackground();
-  }, 10000);
-};
-
-const stopAutoplay = () => {
-  clearInterval(autoplayId);
-};
-
-function resetAutoplay() {
-  stopAutoplay();
-  startAutoplay();
-}
-// call the startAutoplay function
-startAutoplay();
-
-// manual navigation
-prevBtn.addEventListener("click", () => {
-  currentImageIndex--;
-  if (currentImageIndex < 0) currentImageIndex = images.length - 1;
-  updateBackground();
-  resetAutoplay();
-});
-
-nextBtn.addEventListener("click", () => {
-  currentImageIndex++;
-  if (currentImageIndex >= images.length) currentImageIndex = 0;
-  updateBackground();
-  resetAutoplay();
-});
-
-// Dots navigation
-dotsBox.addEventListener("click", (e) => {
-  if (e.target.tagName === "SPAN") {
-    currentImageIndex = Array.from(dotsBox.children).indexOf(e.target);
-    updateBackground();
-    resetAutoplay();
+    // Show text after 2 seconds
+    setTimeout(() => {
+      heroTextBox.textContent = images[currentImageIndex].text;
+      heroTextBox.classList.add("show");
+    }, 2000);
   }
-});
 
-// Mobile swipe support
-let touchStartX = 0;
-let touchEndX = 0;
+  images.forEach(() => {
+    const dot = document.createElement("span");
+    dotsBox.append(dot);
+  });
 
-heroSection.addEventListener("touchstart", (e) => {
-  touchStartX = e.changedTouches[0].clientX;
-});
+  function updateDots() {
+    const allDots = dotsBox.querySelectorAll("span");
+    allDots.forEach((dot) => dot.classList.remove("active"));
+    allDots[currentImageIndex].classList.add("active");
+  }
 
-heroSection.addEventListener("touchend", (e) => {
-  touchEndX = e.changedTouches[0].clientX;
-  handleSwipe();
-  resetAutoplay();
-});
+  // initialize the background with the first image
+  updateBackground();
 
-function handleSwipe() {
-  if (touchStartX - touchEndX > 50) {
-    // Swipe left
-    currentImageIndex++;
-    if (currentImageIndex >= images.length) currentImageIndex = 0;
-    updateBackground();
-  } else if (touchEndX - touchStartX > 50) {
-    // Swipe right
+  // Then autoplay after every 10 seconds
+  let autoplayId;
+
+  const startAutoplay = () => {
+    autoplayId = setInterval(() => {
+      currentImageIndex++;
+      if (currentImageIndex >= images.length) currentImageIndex = 0;
+      updateBackground();
+    }, 10000);
+  };
+
+  const stopAutoplay = () => {
+    clearInterval(autoplayId);
+  };
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+  // call the startAutoplay function
+  startAutoplay();
+
+  // manual navigation
+  prevBtn.addEventListener("click", () => {
     currentImageIndex--;
     if (currentImageIndex < 0) currentImageIndex = images.length - 1;
     updateBackground();
+    resetAutoplay();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentImageIndex++;
+    if (currentImageIndex >= images.length) currentImageIndex = 0;
+    updateBackground();
+    resetAutoplay();
+  });
+
+  // Dots navigation
+  dotsBox.addEventListener("click", (e) => {
+    if (e.target.tagName === "SPAN") {
+      currentImageIndex = Array.from(dotsBox.children).indexOf(e.target);
+      updateBackground();
+      resetAutoplay();
+    }
+  });
+
+  // Mobile swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  heroSection.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  });
+
+  heroSection.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+    handleSwipe();
+    resetAutoplay();
+  });
+
+  function handleSwipe() {
+    if (touchStartX - touchEndX > 50) {
+      // Swipe left
+      currentImageIndex++;
+      if (currentImageIndex >= images.length) currentImageIndex = 0;
+      updateBackground();
+    } else if (touchEndX - touchStartX > 50) {
+      // Swipe right
+      currentImageIndex--;
+      if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+      updateBackground();
+    }
   }
+  // End of carousel functionality
 }
-// End of carousel functionality
 
 // Swiper for testimonials: Swiper Library
 const swiperTestimonial = new Swiper(".testimonial__swiper", {
@@ -301,4 +303,29 @@ const swiperTestimonial = new Swiper(".testimonial__swiper", {
     delay: 3000,
     disableOnInteraction: false,
   },
+});
+
+// Scroll Reveal animation
+const sr = ScrollReveal({
+  distance: "50px",
+  duration: 1800,
+  easing: "ease-in-out",
+  reset: false,
+});
+
+function staggerReveal(selector, origin) {
+  sr.reveal(`${selector} > *`, {
+    origin: origin,
+    interval: 300,
+  });
+}
+
+staggerReveal(".stagger-top", "top");
+staggerReveal(".stagger-right", "right");
+staggerReveal(".stagger-bottom", "bottom");
+staggerReveal(".stagger-left", "left");
+
+sr.reveal(".fade-in", {
+  origin: "bottom",
+  opacity: 0,
 });

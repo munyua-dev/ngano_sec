@@ -259,8 +259,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
-  background: rgba(187, 187, 187, 0.6);
+  color: #fff;
+  background: var(--shadow-primary);
   border: none;
   border-radius: var(--radius-sm);
   font-size: 2rem;
@@ -504,7 +504,7 @@ main {
 }
 
 .layer:hover {
-  background: rgba(30, 144, 255, 0.4);
+  background: rgb(172, 200, 229, 0.7);
 }
 
 .layer h3,
@@ -717,7 +717,11 @@ li {
   font-weight: 900;
   font-style: italic;
   text-align: right;
-  padding: 0.25rem 2.5%;
+  padding: 2.5%;
+}
+
+.author_link {
+  text-decoration: underline;
 }
 
 .copyright-sec {
@@ -926,11 +930,11 @@ li {
   padding: 15px;
   margin-bottom: 17px;
   outline: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.contact-col fieldset {
   border: none;
+  border-radius: 4px;
+  background-color: var(--footer-background);
+}
+.contact-col form {
   padding: 1rem;
 }
 
@@ -961,6 +965,11 @@ li {
 .gallery img {
   width: 100%;
   border-radius: var(--radius-sm);
+}
+
+.gallery p {
+  font-size: var(--font-sm);
+  color: #112a46;
 }
 
 .thankyou-header {
