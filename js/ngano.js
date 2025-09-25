@@ -329,3 +329,53 @@ sr.reveal(".fade-in", {
   origin: "bottom",
   opacity: 0,
 });
+
+// ===== Handle Contact Form (submit via fetch and show thank you modal) =====
+const contactForm = document.querySelector(".contact-form"),
+  thankyouModal = document.querySelector(".thankyou_modal"),
+  closeIcon = document.querySelector(".close_icon");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        if (thankyouModal) thankyouModal.classList.add("show-modal");
+      } else {
+        alert("There was a problem submitting your form. Please try again.");
+      }
+    } catch (error) {
+      alert("Network error. Please try again later.");
+    }
+  });
+}
+
+function closeThankYouModal() {
+  if (thankyouModal) thankyouModal.classList.remove("show-modal");
+}
+
+if (closeIcon) {
+  closeIcon.addEventListener("click", closeThankYouModal);
+}
+
+if (thankyouModal) {
+  thankyouModal.addEventListener("click", (e) => {
+    if (e.target === thankyouModal) closeThankYouModal();
+  });
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && thankyouModal?.classList.contains("show-modal")) {
+    closeThankYouModal();
+  }
+});

@@ -955,6 +955,7 @@ li {
 }
 
 .thankyou_container {
+  text-align: initial;
   position: relative;
   max-width: 600px;
   margin: 0 1rem;
@@ -966,17 +967,15 @@ li {
 
 .thankyou_container h1 {
   color: #2c3e50;
+  text-align: center;
+  margin-bottom: var(--margin-md);
 }
 
-.thankyou_container h3 {
-  margin-bottom: var(--mb-0-25);
-  color: #0674f7;
-}
-
-.thankyou_container p {
+.thankyou_container p,
+ul {
   line-height: 1.6;
   color: #2c3e50;
-  margin-bottom: var(--mb-0-25);
+  margin-bottom: var(--margin-md);
 }
 
 .close_icon {
