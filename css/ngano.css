@@ -1076,7 +1076,7 @@ footer {
 
   .nav_links ul li {
     display: block;
-    padding-left: var(--padding-sm);
+    padding: var(--padding-sm);
   }
 
   nav .fa {
