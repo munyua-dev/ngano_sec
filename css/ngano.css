@@ -6,7 +6,7 @@
 :root {
   /* Brand Colors */
   --primary: #1e90ff;
-  --primary-dark: #07294d;
+  --primary-dark: #0c4a8c;
   --accent: #ff4500;
   --background: #ecf0f3;
   --white: #fff;
@@ -15,6 +15,8 @@
   --overlay-strong: rgba(4, 9, 30, 0.7);
   --motto-bg: #cbd5e1;
   --para-color: #4e4e4e;
+  --logo-bg:rgb(45, 58, 84);
+  --newFooter-bg:rgb(93, 163, 239);
 
   /* Border Radius */
   --radius-sm: 5px;
@@ -103,7 +105,7 @@ h3:not(.hero_section h3, .sub-header h3) {
   justify-content: space-between;
   align-items: center;
   padding: var(--padding-sm);
-  background: var(--footer-background);
+  background: var(--logo-bg);
   color: var(--primary);
   font-size: var(--font-xs);
 }
@@ -153,6 +155,14 @@ nav .sch-name {
   width: 100%;
   transition: 0.5s;
 }
+/* Hover or touch effect */
+nav ul li a:hover,
+nav ul li a:focus {
+  color: rgb(222, 85, 61); 
+    transform: scale(1.1); 
+  text-decoration: none; 
+}
+
 
 /* Sticky nav initial state */
 nav.sticky {
@@ -276,19 +286,19 @@ main {
 .fixed-socials {
   position: fixed;
   top: 50%;
-  left: 0;
+  left: 0.5%;
   display: flex;
   flex-direction: column;
-  gap: 0.1em;
+  gap: 0.2em;
   z-index: 1000;
 }
 
 .fixed-socials a {
-  background: rgba(30, 144, 255, 0.8);
+  background: rgba(4, 244, 60, 0.8);
   color: var(--background);
   border: none;
   border-radius: 0.15em;
-  padding: 0.05em;
+  padding: 0.2em;
   font-size: 1.5rem;
   cursor: pointer;
   transition: background 0.3s;
@@ -349,7 +359,7 @@ main {
   width: 50%;
   position: absolute;
   top: 30%;
-  left: 15%;
+  left: 27%;
   text-align: left;
   color: var(--white);
   font-size: var(--font-md);
@@ -683,12 +693,12 @@ main {
 footer {
   margin-top: 150px;
   width: 100%;
-  background: var(--footer-background);
+  background: var(--newFooter-bg);
 }
 
 .footer-sec article {
-  padding: 24px;
-  margin-bottom: 2.5em;
+  padding: 50px;
+  margin-bottom: 0.5em;
 }
 
 .footer-sec article h4 {
@@ -719,8 +729,8 @@ footer {
   padding: 2.5%;
 }
 
-.author_link {
-  text-decoration: underline;
+.author_link {  
+ text-decoration:underline;
 }
 
 .copyright-sec {
@@ -1123,3 +1133,11 @@ footer {
     display: none;
   }
 }
+
+a:hover {
+  text-decoration: underline; /* Blue underline appears on hover */
+  text-decoration-color: blue;
+}
+
+
+

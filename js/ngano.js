@@ -327,7 +327,7 @@ staggerReveal(".stagger-left", "left");
 
 sr.reveal(".fade-in", {
   origin: "bottom",
-  opacity: 0,
+  opacity:0,
 });
 
 // ===== Handle Contact Form (submit via fetch and show thank you modal) =====
