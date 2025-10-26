@@ -7,7 +7,7 @@
   /* Brand Colors */
   --primary: #1e90ff;
   --primary-dark: #0c4a8c;
-  --accent: #ff4500;
+  --accent: rgba(4, 244, 60, 0.8);
   --background: #ecf0f3;
   --white: #fff;
   --footer-background: rgba(7, 41, 77, 0.9);
@@ -15,8 +15,9 @@
   --overlay-strong: rgba(4, 9, 30, 0.7);
   --motto-bg: #cbd5e1;
   --para-color: #4e4e4e;
-  --logo-bg:rgb(45, 58, 84);
-  --newFooter-bg:rgb(93, 163, 239);
+  --logo-bg: rgb(45, 58, 84);
+  --newFooter-bg: rgb(93, 163, 239);
+  --socials-bg: rgba(4, 244, 60, 0.8);
 
   /* Border Radius */
   --radius-sm: 5px;
@@ -158,11 +159,10 @@ nav .sch-name {
 /* Hover or touch effect */
 nav ul li a:hover,
 nav ul li a:focus {
-  color: rgb(222, 85, 61); 
-    transform: scale(1.1); 
-  text-decoration: none; 
+  color: var(--accent);
+  transform: scale(1.1);
+  text-decoration: none;
 }
-
 
 /* Sticky nav initial state */
 nav.sticky {
@@ -269,7 +269,7 @@ main {
   align-items: center;
   justify-content: center;
   color: #fff;
-  background: var(--shadow-primary);
+  background: var(--accent);
   border: none;
   border-radius: var(--radius-sm);
   font-size: 2rem;
@@ -283,6 +283,10 @@ main {
   opacity: 1;
 }
 
+.scrollToTopBtn:hover {
+  background-color: #0674f7;
+}
+
 .fixed-socials {
   position: fixed;
   top: 50%;
@@ -294,7 +298,7 @@ main {
 }
 
 .fixed-socials a {
-  background: rgba(4, 244, 60, 0.8);
+  background: var(--socials-bg);
   color: var(--background);
   border: none;
   border-radius: 0.15em;
@@ -336,7 +340,7 @@ main {
   border-radius: var(--radius-sm);
   padding: 0.1em;
   font-size: 1.5rem;
-  color: var(--background);
+  color: var(--accent);
   cursor: pointer;
   display: none;
   z-index: 1000;
@@ -633,7 +637,7 @@ main {
 }
 
 .testimonial .swiper-pagination-bullet {
-  background-color: var(--primary);
+  background-color: var(--accent);
   transition: opacity 0.4s;
 }
 
@@ -710,6 +714,11 @@ footer {
   line-height: 1.5;
 }
 
+footer a:hover {
+  text-decoration: underline; /* Blue underline appears on hover */
+  text-decoration-color: blue;
+}
+
 .socials [class^="fa"] {
   padding-right: 1rem;
   cursor: pointer;
@@ -729,8 +738,8 @@ footer {
   padding: 2.5%;
 }
 
-.author_link {  
- text-decoration:underline;
+.author_link {
+  text-decoration: underline;
 }
 
 .copyright-sec {
@@ -943,6 +952,7 @@ footer {
   border-radius: 4px;
   background-color: var(--footer-background);
 }
+
 .contact-col form {
   padding: 1rem;
 }
@@ -1133,11 +1143,3 @@ footer {
     display: none;
   }
 }
-
-a:hover {
-  text-decoration: underline; /* Blue underline appears on hover */
-  text-decoration-color: blue;
-}
-
-
-
